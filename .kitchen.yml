@@ -2,8 +2,10 @@
 driver:
   name: vagrant
   provider: vmware_fusion
+  #box: opscode-centos-6.5-vmware
+  box: opscode-centos-6.5
   customize:
-    memory: 512
+    memory: 1024
 
 provisioner:
   name: chef_solo

@@ -36,3 +36,21 @@ The .vmx is what's needed by VmWare Fusion to start something up with.
 vagrant plugin install vagrant-vmware-fusion
 vagrant plugin license vagrant-vmware-fusion ~/Downloads/license.lic
 vagrant box add --name opscode-centos-6.5-vmware --provider vmware_desktop ./builds/opscode_centos-6.5_chef-provisionerless.box
+
+----
+Got sudo helper installed into MacOSX.
+My VMware box didn't have vmware tools installed
+Switched to original upstream
+
+kitchen create
+# kitchen converge; verify
+# VAGRANT_CWD=./.kitchen/kitchen-vagrant/default
+(cd special path; vagrant halt)
+
+#vmrun clone .kitchen/kitchen-vagrant/learnchef-centos-65/.vagrant/machines/default/vmware_fusion/713fed99-7555-4345-8f24-1b42045e23bc/packer-centos-6.5-x86_64.vmx builds/learnchef.vmx full
+
+source=$(vmrun list | grep $PWD)
+
+vmrun clone $source builds/learnchef.vmx full
+
+

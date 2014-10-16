@@ -54,3 +54,29 @@ source=$(vmrun list | grep $PWD)
 vmrun clone $source builds/learnchef.vmx full
 
 
+----
+# Update
+
+So I have the following VmWare approaches underway
+
+1. This learnchef which uses the opscode bento box for 6.5, then uses kitchen to lay stuff down. Runs
+1. $HOME/Projects/cheftraining which is a clone of https://github.com/learningchef/cheftraining.git, which is a Packer box build from Mischa, built myself with chefdk 0.3.0
+1. $HOME/tmp/learningchef from `vagrant init learningchef/cheftraining` from https://vagrantcloud.com/learningchef/boxes/cheftraining Mischa, with chefdk 0.2.2
+
+The second two are Ubuntu 14.04.1 with docker 1.2.0
+
+Also, there's https://github.com/box-cutter/centos-vm.git, which has CentOs7, w Docker, and Docker 1.1.2 is supported in EPEL
+
+What about Docker verions?
+- 1.1.2 released 22 July 2014
+- 1.2.0 released 22 August 2014
+- Centos7 has 0.11.1
+- Centos6 has 1.1.2 and 1.2.0 (testing, https://admin.fedoraproject.org/updates/docker-io-1.2.0-3.el6) according to https://apps.fedoraproject.org/packages/docker-io/overview/
+- And testing can be enabled with: yum install <foo> --enablerepo=epel-testing according to http://fedoraproject.org/wiki/EPEL/testing
+
+What about kernels
+- 2.6.38+
+- 3.8+ recommended
+- Ubuntu 3.13 is on 14.04
+- RHEL 6: 2.6.32-504 is RHEL 6.6
+- RHEL 7: 3.10.0-123

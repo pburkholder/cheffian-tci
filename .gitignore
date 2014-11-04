@@ -3,3 +3,4 @@ builds
 .vagrant
 vendor
 *.lock
+berks-cookbooks

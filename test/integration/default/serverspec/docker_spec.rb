@@ -12,9 +12,8 @@ end
 
 describe file('/etc/yum.repos.d/chef_stable.repo')
 
-describe service('chef-server') do
-  it { should be_enabled }
-  it { should be_running }
+describe command('/usr/bin/chef-server-ctl status') do
+  its(:exit_status) { should eq 0 }
 end
 
 describe file('/etc/hosts') do

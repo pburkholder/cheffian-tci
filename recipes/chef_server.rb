@@ -15,36 +15,18 @@ template '/etc/yum.repos.d/chef_stable.repo' do
   variables({
     centos_version: '6'
   })
-  notifies :run, 'execute[prime_yum_cache]'
+  notifies :run, 'execute[prime_yum_cache]', :immediately
+end
+
+execute 'reconfigure-chef-server' do
+  command 'chef-server-ctl reconfigure'
+  action :nothing
 end
 
 package 'chef-server' do
   action :install
   version node['tci']['chef-server']['version']
-end
-
-# cargo-culted from community chef-server::default
-# create the chef-server etc directory
-directory '/etc/chef-server' do
-  owner 'root'
-  group 'root'
-  recursive true
-  action :create
-end
-
-# create the initial chef-server config file
-file '/etc/chef-server/chef-server.rb' do
-  content "topology 'standalone'\napi_fqdn \"#{api_fqdn}\"\n"
-  owner 'root'
-  group 'root'
-  action :create
   notifies :run, 'execute[reconfigure-chef-server]', :immediately
-end
-
-# reconfigure the installation
-execute 'reconfigure-chef-server' do
-  command 'chef-server-ctl reconfigure'
-  action :nothing
 end
 
 ruby_block 'ensure node can resolve API FQDN' do
@@ -55,4 +37,12 @@ ruby_block 'ensure node can resolve API FQDN' do
     fe.write_file
   end
   not_if { Resolv.getaddress(api_fqdn) rescue false } # host resolves
+end
+
+file '/etc/chef-server/chef-server.rb' do
+  content "topology \"standalone\"\napi_fqdn \"#{api_fqdn}\"\n"
+  owner 'root'
+  group 'root'
+  action :create
+  notifies :run, 'execute[reconfigure-chef-server]', :immediately
 end

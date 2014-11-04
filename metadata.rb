@@ -10,3 +10,5 @@ version           '0.0.1'
 end
 
 depends 'docker'
+depends 'chef-dk', '~> 2.0.3'
+

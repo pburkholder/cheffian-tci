@@ -1,3 +1,5 @@
 builds
 .kitchen
 .vagrant
+vendor
+*.lock

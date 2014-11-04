@@ -1,11 +1,8 @@
 #
-# Cookbook Name:: learnchef_docker
-# Recipe:: default
+# Cookbook Name:: tci
+# Recipe:: docker
 #
 # Copyright (c) 2014 The Authors, All Rights Reserved.
-
-node.default['docker']['docker_daemon_timeout'] = 600
-node.default['docker']['exec_driver'] = "lxc"
 
 include_recipe "docker::default"
 

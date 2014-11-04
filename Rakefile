@@ -18,7 +18,8 @@ FoodCritic::Rake::LintTask.new(:lint) do |t|
 end
 
 desc 'Run ChefSpec examples'
-RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec) do t
+end
 
 desc 'Run all tests'
 #task :test => [:lint, :spec, :rubocop]

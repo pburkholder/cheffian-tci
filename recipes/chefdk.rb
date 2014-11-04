@@ -7,7 +7,7 @@
 
 
 chef_dk 'chef_dk' do
-  version node['tci']['chef_dk']['version']
+  version node['tci']['chefdk']['version']
   global_shell_init true
   action :install
 end

@@ -3,7 +3,7 @@ driver:
   name: vagrant
   provider: vmware_fusion
   box: opscode-centos-6.5
-#  vagrantfile_erb: Vagrantfile.erb
+  vagrantfile_erb: Vagrantfile.erb
   customize:
     memory: 1024
 
@@ -12,7 +12,7 @@ provisioner:
   # cookbook_path: ./cookbooks
   # require_chef_omnibus: latest # will install on each run
   require_chef_omnibus: 11.16.4
-  require_chef_omnibus: false
+  # require_chef_omnibus: false
 
 
 platforms:

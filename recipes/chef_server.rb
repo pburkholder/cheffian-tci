@@ -23,7 +23,7 @@ execute 'reconfigure-chef-server' do
   action :nothing
 end
 
-package 'chef-server' do
+package 'chef-server-core' do
   action :install
   version node['tci']['chef-server']['version']
   notifies :run, 'execute[reconfigure-chef-server]', :immediately
@@ -39,7 +39,7 @@ ruby_block 'ensure node can resolve API FQDN' do
   not_if { Resolv.getaddress(api_fqdn) rescue false } # host resolves
 end
 
-file '/etc/chef-server/chef-server.rb' do
+file '/etc/opscode/chef-server.rb' do
   content "topology \"standalone\"\napi_fqdn \"#{api_fqdn}\"\n"
   owner 'root'
   group 'root'

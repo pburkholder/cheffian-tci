@@ -10,4 +10,4 @@ version           '0.0.2'
 end
 
 depends 'docker'
-depends 'chef-dk', '~> 2.0.3'
+depends 'sudo'

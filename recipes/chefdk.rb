@@ -5,9 +5,7 @@
 #
 # Copyright (c) 2014 The Authors, All Rights Reserved.
 
-
-chef_dk 'chef_dk' do
+package 'chefdk' do
   version node['tci']['chefdk']['version']
-  global_shell_init false
   action :install
 end

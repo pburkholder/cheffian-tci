@@ -1,6 +1,5 @@
 
-
-node.default['chef_user']['password'] = password
+password = node['tci']['chef_user']['password']
 
 shadow_hash = password.crypt("$1$")
 

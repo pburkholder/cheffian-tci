@@ -21,6 +21,6 @@ platforms:
 suites:
 - name: default
   run_list:
-#    - "recipe[tci]"
-    - "recipe[tci::docker]"
-    - "recipe[tci::dev_prep]"
+    - "recipe[tci]"
+#    - "recipe[tci::docker]"
+#    - "recipe[tci::dev_prep]"

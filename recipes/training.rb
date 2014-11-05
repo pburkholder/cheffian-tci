@@ -33,7 +33,7 @@ end
 # org create ORG_SHORT_NAME ORG_FULL_NAME -a USERNAME
 execute 'create training org' do
   creates "#{chef_dir}/training_org.pem"
-  command "chef-server-ctl org-create training_org training_org -a training -f -f #{chef_dir}/training_org.pem"
+  command "chef-server-ctl org-create training_org training_org -a training -f #{chef_dir}/training_org.pem"
 end
 
 template 'knife.rb' do

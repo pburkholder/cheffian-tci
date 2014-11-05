@@ -17,6 +17,11 @@ user "chef" do
   supports :manage_home => true
 end
 
+group 'docker' do
+  append true
+  members 'chef'
+end
+
 template "/home/chef/.bash_profile" do
   source "bash_profile.erb"
   owner "chef"

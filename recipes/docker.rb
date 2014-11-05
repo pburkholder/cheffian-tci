@@ -6,17 +6,6 @@
 
 include_recipe "docker::default"
 
-# TODO:  is there a better way?  a chefdk_gem resource, perhaps?
-# action :nothin pending chefdk
-execute "install kitchen-docker" do
-  action :run
-  command "/opt/chefdk/bin/chef gem install kitchen-docker"
-  user "chef"
-  group "chef"
-  environment "HOME" => "/home/chef"
-  ignore_failure true
-end
-
 # TODO:  is there a way to get a clean docker install without requiring this?
 # action :nothing pending chefdk
 execute "clean-up docker" do
